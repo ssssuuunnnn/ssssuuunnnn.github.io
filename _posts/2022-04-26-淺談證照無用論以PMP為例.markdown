@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "淺談證照無用論以 PMP 為例"
-date:   2026-07-05 11:25:00 +0000
+date:   2022-04-26 04:13:53 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E6%B7%BA%E8%AB%87%E8%AD%89%E7%85%A7%E7%84%A1%E7%94%A8%E8%AB%96%E4%BB%A5-pmp-%E7%82%BA%E4%BE%8B-9497d66ab895
 ---

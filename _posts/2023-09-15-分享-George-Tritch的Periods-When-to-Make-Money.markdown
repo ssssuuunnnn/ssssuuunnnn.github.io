@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "[分享]George Tritch的Periods When to Make Money"
-date:   2026-07-05 11:10:00 +0000
+date:   2023-09-15 02:30:35 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E5%88%86%E4%BA%AB-george-tritch%E7%9A%84periods-when-to-make-money-49579374ec5b
 ---

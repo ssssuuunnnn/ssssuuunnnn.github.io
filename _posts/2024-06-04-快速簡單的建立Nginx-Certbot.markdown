@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Easy to Build Nginx+Certbot"
-date:   2026-07-05 10:15:00 +0000
+date:   2024-06-04 02:21:53 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E5%BF%AB%E9%80%9F%E7%B0%A1%E5%96%AE%E7%9A%84%E5%BB%BA%E7%AB%8Bnginx-certbot-c289fe6f93bd
 ---

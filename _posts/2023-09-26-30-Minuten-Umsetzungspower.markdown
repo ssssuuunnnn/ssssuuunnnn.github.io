@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "30 Minuten: Umsetzungspower"
-date:   2026-07-05 11:00:00 +0000
+date:   2023-09-26 09:11:55 +0000
 categories: 轉載
 original: https://medium.com/@itkh/book-report-30-minuten-umsetzungspower-96e119f7da7
 ---

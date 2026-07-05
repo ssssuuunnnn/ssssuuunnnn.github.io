@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "用 AI 寫歌-Suno"
-date:   2026-07-05 10:00:00 +0000
+date:   2024-05-31 03:32:39 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E7%94%A8-ai-%E5%AF%AB%E6%AD%8C-suno-9bb5fb57de2f
 ---

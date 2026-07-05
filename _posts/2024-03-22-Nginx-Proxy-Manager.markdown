@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Nginx Proxy Manager"
-date:   2026-07-05 10:20:00 +0000
+date:   2024-03-22 09:06:04 +0000
 categories: 轉載
 original: https://medium.com/@itkh/nginx-proxy-manager-3913a65aff93
 ---

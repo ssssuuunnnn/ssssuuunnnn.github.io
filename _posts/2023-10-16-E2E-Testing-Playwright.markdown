@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "E2E Testing — Playwright"
-date:   2026-07-05 10:50:00 +0000
+date:   2023-10-16 06:13:55 +0000
 categories: 轉載
 original: https://medium.com/@itkh/e2e-testing-playwright-b514eda51d70
 ---

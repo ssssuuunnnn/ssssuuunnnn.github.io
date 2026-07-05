@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "E2E Testing 的執行時機"
-date:   2026-07-05 10:25:00 +0000
+date:   2024-03-27 09:40:06 +0000
 categories: 轉載
 original: https://medium.com/@itkh/e2e-testing-%E7%9A%84%E5%9F%B7%E8%A1%8C%E6%99%82%E6%A9%9F-c82884869eea
 ---

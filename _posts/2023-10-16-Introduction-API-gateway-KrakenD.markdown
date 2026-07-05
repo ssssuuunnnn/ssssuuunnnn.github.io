@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introduction API gateway- KrakenD"
-date:   2026-07-05 10:55:00 +0000
+date:   2023-10-16 03:59:52 +0000
 categories: 轉載
 original: https://medium.com/@itkh/api-gateway-krakend-d1ded092a0e3
 ---

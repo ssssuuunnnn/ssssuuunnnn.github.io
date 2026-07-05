@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "胖卡餐車退坑記"
-date:   2026-07-05 11:30:00 +0000
+date:   2024-07-17 01:12:33 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E8%83%96%E5%8D%A1%E9%A4%90%E8%BB%8A%E9%80%80%E5%9D%91%E8%A8%98-d7b7eb268b44
 ---

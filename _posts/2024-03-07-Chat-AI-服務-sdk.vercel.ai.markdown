@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Chat AI 服務 sdk.vercel.ai"
-date:   2026-07-05 10:35:00 +0000
+date:   2024-03-07 02:02:26 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E7%B6%B2%E7%AB%99%E5%88%86%E4%BA%AB-https-sdk-vercel-ai-1d6210cad6e1
 ---

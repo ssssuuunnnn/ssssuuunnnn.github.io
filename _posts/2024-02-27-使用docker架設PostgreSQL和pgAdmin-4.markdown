@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "使用docker架設PostgreSQL和pgAdmin 4"
-date:   2026-07-05 10:40:00 +0000
+date:   2024-02-27 05:49:11 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E4%BD%BF%E7%94%A8docker%E6%9E%B6%E8%A8%ADpostgresql%E5%92%8Cpgadmin-4-d82115b8d308
 ---

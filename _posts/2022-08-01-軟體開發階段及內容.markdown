@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "軟體開發階段及內容"
-date:   2026-07-05 11:15:00 +0000
+title:  "如何有效且準確的進行軟體開發？"
+date:   2022-08-01 08:11:29 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E9%9A%8E%E6%AE%B5%E5%8F%8A%E5%85%A7%E5%AE%B9-dec47e26cd4
 ---
