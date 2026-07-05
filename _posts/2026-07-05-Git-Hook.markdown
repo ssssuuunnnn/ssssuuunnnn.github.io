@@ -1,0 +1,35 @@
+---
+layout: post
+title:  "Git Hook"
+date:   2026-07-05 10:05:00 +0000
+categories: 轉載
+original: https://medium.com/@itkh/git-hook-c391486d4fda
+---
+
+最近在研究關於 DevSecOps 的東西，看到書中有介紹到 git hook 中的pre-commit，就突然有了點回憶，因為在之前的工作環境中有用到過一次 git hook，之後就漸漸遺忘了這個東西。
+
+不過其實 Hook 機制，在進行開發流程控管的時候也是相當好用，首先先來介紹一下在 Git 中有哪些時機點的 Hook：
+
+  * pre-commit：執行 commit 之前
+  * pre-merge-commit： 合拼前提交
+  * pre-push：執行 push 動作之前
+  * pre-rebase：執行 rebase 動作之前
+
+
+
+上述的這些可以從專案根目錄的 .git/hook 中看到，一開始會看到資料夾中有上述這些 hook 的 sample 檔，就複製下來把 .sample 拿掉就可以發動了，不過 hook資料夾中還有其他很多不同時機點的設定，所以也可以再做嘗試。
+
+目前以我的實作經驗有用到下面二項：
+
+  1. 將 lint 的語法檢查設定在 pre-commit
+  2. unit test 的觸發時機點加在 pre-push
+
+
+
+透過這個方式可以把一些需要檢查的項目在工程師要上版時自動檢查，工程師需要修正檢查時所遇到的問題，再能再進行上版。
+
+使用這樣子的機制，可以將一些檢查融合至開發流程中，讓許多可能會被忽略的檢查都可以確實執行，這樣一來也可以確保程式碼的品質。
+
+不過目前有個小問題，就是現在許多工程師似乎在使用 git 上都只會使用 GUI 的服務，像是 SourceTree 好像就沒有支持到 hook 的機制(我查到的資訊)，所以這可能會是一個比較可惜的地方。
+
+那這次就分享到這邊，謝謝大家。
