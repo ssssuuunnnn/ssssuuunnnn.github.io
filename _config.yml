@@ -23,6 +23,8 @@ header_title: 郭愷
 email: sun889999@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   一個用 GitHub Pages + Jekyll 架設的個人部落格。
+lang: zh-TW
+author: 郭愷
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.sunkuo.cc" # the base hostname & protocol for your site
 github_username:  ssssuuunnnn
@@ -33,6 +35,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
