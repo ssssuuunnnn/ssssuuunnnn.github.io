@@ -4,6 +4,8 @@ title:  "使用 GitHub Copilot CLI Fleet Mode 開發網頁服務學習"
 date:   2026-07-11 09:08:03 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E4%BD%BF%E7%94%A8-github-copilot-cli-fleet-mode-%E9%96%8B%E7%99%BC%E7%B6%B2%E9%A0%81%E6%9C%8D%E5%8B%99%E5%AD%B8%E7%BF%92-2aa5da6565b3
+description: "利用 GitHub Copilot CLI 的 Fleet Mode 多代理並行架構，拆解資料層、路由層與測試層，實作桃園市居家護理所開放資料的 Node.js Express API。"
+image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuSIVXtdfEyXNJPpNQJuXg.png
 ---
 
 這週放颱風假前，跟一位新進的同仁在聊各自 AI 工具的使用，就有聊到 Subagent 的開發。因為之前有聽到相關的開發方式，但還沒有真正的實作到，趁颱風假時來研究，對於目前最常使用的 GitHub Copilot CLI 指的就是 **Fleet Mode** 支援多代理並行執行（Parallel Subagent Execution）。
