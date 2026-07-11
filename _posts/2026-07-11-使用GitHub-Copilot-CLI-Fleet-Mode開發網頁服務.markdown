@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "使用 GitHub Copilot CLI Fleet Mode 開發網頁服務學習"
+title:  "使用 GitHub Copilot CLI Fleet Mode 開發網頁服務"
 date:   2026-07-11 09:08:03 +0000
 categories: 轉載
 original: https://medium.com/@itkh/%E4%BD%BF%E7%94%A8-github-copilot-cli-fleet-mode-%E9%96%8B%E7%99%BC%E7%B6%B2%E9%A0%81%E6%9C%8D%E5%8B%99%E5%AD%B8%E7%BF%92-2aa5da6565b3
