@@ -12,6 +12,8 @@ original: https://medium.com/@itkh/%E4%BD%BF%E7%94%A8-github-copilot-cli-fleet-m
 
 本次以**桃園市居家護理所開放資料 (CSV)** 為例，說明如何設定並啟動多代理架構，實作一個具備資料解析、API 路由與自動化測試的 Node.js Express 網頁服務。
 
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuSIVXtdfEyXNJPpNQJuXg.png)
+
 ### 🛠️ 環境準備與工作區初始化
 
 在使用子代理功能前，需確保 Copilot CLI 已更新至支援版本，且專案目錄已建立 Git 版控（子代理需依賴 Git 狀態進行工作區隔離）。
@@ -68,6 +70,8 @@ fleet_modes:
 ```bash
 copilot --experimental /fleet --template web-service-standard "幫我讀取專案中的桃園居家護理所 CSV，並實作支援依『服務區域』篩選的 GET /api/nursing 與 GET /api/nursing/:id 接口"
 ```
+
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qC9FwG0BVUuq8N8pPpBqDA.png)
 
 執行期間的觀測與特點：
 
