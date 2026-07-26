@@ -45,3 +45,5 @@ Ticket 跟規格都明確後，才輪到 AI 進入核心編碼環節。指令邏
 把 /grill-me（對齊需求）、/to-tickets（拆解任務）、/tdd（嚴格實作）這三段接起來看，其實就是把「AI 亂猜」這個問題，拆成三道關卡一次解決，而不是靠一個 Prompt 硬扛。這套組合拳放進 GitHub Copilot CLI 裡用起來，體感差最大的地方不是省了多少 Token，是你不用再事後回頭改一堆方向錯掉的程式碼。
 
 跟之前介紹的 Superpowers 拿來比一下，mattpocock/skills 對系統開發的態度是「一次只處理一個問題」——依照不同階段的狀況呼叫不同的 Skill，不用整套流程一氣呵成，開發上也會先從最小可交付的單元開始，而不是一口氣把整個系統生出來。看完大神把軟體工程的經驗，精煉後轉換成一個個可以直接呼叫的 Skill Prompt，只能說站在大神肩膀上開發，真的比自己瞎摸輕鬆太多。
+
+資料來源：[mattpocock/skills](https://github.com/mattpocock/skills)、[Matt Pocock](https://github.com/mattpocock)
