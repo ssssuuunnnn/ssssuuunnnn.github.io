@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "站在大神的肩膀上開發，700 萬人下載的 Matt Pocock 工作流程"
+title:  "站在大神的肩膀上開發，19萬顆星的 Matt Pocock 工作流程"
 date:   2026-07-26 19:14:00 +0800
 description: "拆解 mattpocock/skills 專案的完整工作流：從 /grill-me 拷問需求、/to-spec 與 /to-tickets 拆解任務，到 /implement、/tdd 的防作弊實作，並附上 GitHub Copilot CLI 安裝方式。"
 image: /assets/images/2026-07-26-matt-pocock-skills/圖1.jpg
 ---
 
-上次用了 Superpowers 這個 Skill 之後，就想說還有沒有其他厲害的 Skill 可以挖，結果真的找到一個外國神——由 Matt Pocock 推出的 [mattpocock/skills](https://github.com/mattpocock/skills)，累計下載數已經衝到 700 萬。這個專案包含了從前期需求對齊到下游實作的一整套輕量化、組合式技能集，比起單一技能，更值得看的是它怎麼把整條流程串起來。
+上次用了 Superpowers 這個 Skill 之後，就想說還有沒有其他厲害的 Skill 可以挖，結果真的找到一個外國神——由 Matt Pocock 推出的 [mattpocock/skills](https://github.com/mattpocock/skills)，在 GitHub 上已經衝到 19 萬顆星。這個專案包含了從前期需求對齊到下游實作的一整套輕量化、組合式技能集，比起單一技能，更值得看的是它怎麼把整條流程串起來。
 
 ![圖1](/assets/images/2026-07-26-matt-pocock-skills/圖1.jpg)
 
