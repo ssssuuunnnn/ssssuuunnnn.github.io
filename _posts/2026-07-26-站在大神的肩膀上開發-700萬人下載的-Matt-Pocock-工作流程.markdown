@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "站在大神的肩膀上開發，700 萬人下載的 Matt Pocock 工作流程"
+date:   2026-07-26 19:14:00 +0800
+description: "拆解 mattpocock/skills 專案的完整工作流：從 /grill-me 拷問需求、/to-spec 與 /to-tickets 拆解任務，到 /implement、/tdd 的防作弊實作，並附上 GitHub Copilot CLI 安裝方式。"
+image: /assets/images/2026-07-26-matt-pocock-skills/圖1.jpg
+---
+
+上次用了 Superpowers 這個 Skill 之後，就想說還有沒有其他厲害的 Skill 可以挖，結果真的找到一個外國神——由 Matt Pocock 推出的 [mattpocock/skills](https://github.com/mattpocock/skills)，累計下載數已經衝到 700 萬。這個專案包含了從前期需求對齊到下游實作的一整套輕量化、組合式技能集，比起單一技能，更值得看的是它怎麼把整條流程串起來。
+
+![圖1](/assets/images/2026-07-26-matt-pocock-skills/圖1.jpg)
+
+本次注重在這個框架的完整工作流：從 /grill-me 的高強度拷問、/to-spec 與 /to-tickets 的規格與任務拆解，到 /implement 或 /tdd 的防作弊實作，其他延伸技能就不多介紹。
+
+**安裝方式（以 GitHub Copilot CLI 為例）**
+
+如果你主要用 GitHub Copilot CLI，設定其實很簡單。先把 mattpocock/skills 的內容下載下來，放到本機專案目錄（通常是 `.github/skills/` 或專案根目錄）。接著在終端機用 Copilot CLI 時，直接把對應的 `.md` 檔內容當成 Prompt Context 載入，就能啟動對應的工作階段。
+
+**整個系統的核心邏輯：避免對齊失敗**
+
+這套 AI 開發系統並不是單打獨鬥的技能，而是靠嚴格的生命週期串接，去避免「對齊失敗（Misalignment）」這件事。標準執行順序是：
+
+`/grill-me（拷問並對齊需求）` ➔ 產出精準 Spec ➔ `/to-spec 或 /to-tickets（拆解為獨立 Ticket）` ➔ 產出 Ticket 清單 ➔ `/implement 或 /tdd（開始寫程式與測試）`
+
+**1. /grill-me —— 需求拷問與對齊**
+
+在寫任何一行程式碼之前，AI 要先變成一個極度嚴苛的架構師，主動對你進行深入訪談。內部指令邏輯大致是：「收到 /grill-me 就不准急著寫程式或計畫，先掃描初始 Prompt 裡的模糊詞彙跟隱藏假設，一次只問一題，往邊界條件跟 Trade-off 鑽。」
+
+具體怎麼跑：AI 先把「加一個購物車功能」這種模糊詞拆成待驗證的假設，然後一次只丟一個關鍵問題，例如「結帳瞬間斷網，交易狀態怎麼復原？」，同時在背景維護一份決策地圖，直到所有邊界都被打勾「已解決」才收工。這一步花的時間看起來像在浪費，但省下的是後面重寫的成本。
+
+**2. /to-spec 或 /to-tickets —— 規格與任務拆解**
+
+需求被 /grill-me 徹底釐清後，下一步是把對話成果具體化，變成工程師跟其他 Agent 都看得懂的語言。指令邏輯是把訪談結果收斂成 Spec（/to-spec），再把 Spec 拆成獨立、依賴關係清楚的 Ticket（/to-tickets）。
+
+這一步的重點在「獨立」跟「依賴關係」——拆出來的 Ticket 要能平行開發或按順序排隊，不會互相打架。等於是把一場對話正式翻譯成一份可以直接發給團隊（或其他 Agent）的工作清單。
+
+**3. /implement 或 /tdd —— 程式碼實作與測試**
+
+Ticket 跟規格都明確後，才輪到 AI 進入核心編碼環節。指令邏輯很硬：「用 TDD 驅動開發，沒寫出會失敗的測試前，不准寫實作程式碼，commit 前一定要跑 Code Review 跟驗證檢查。」
+
+意思是 AI 被鎖進「紅-綠-重構」循環——先寫一個會失敗的測試證明測試有效，才准補上對應的實作，徹底堵死 AI 偷懶或憑感覺亂猜的空間。完成之後還要跑一輪自動 Code Review 跟邊界檢查，確保程式碼維持高內聚、低耦合。
+
+---
+
+把 /grill-me（對齊需求）、/to-tickets（拆解任務）、/tdd（嚴格實作）這三段接起來看，其實就是把「AI 亂猜」這個問題，拆成三道關卡一次解決，而不是靠一個 Prompt 硬扛。這套組合拳放進 GitHub Copilot CLI 裡用起來，體感差最大的地方不是省了多少 Token，是你不用再事後回頭改一堆方向錯掉的程式碼。
+
+跟之前介紹的 Superpowers 拿來比一下，mattpocock/skills 對系統開發的態度是「一次只處理一個問題」——依照不同階段的狀況呼叫不同的 Skill，不用整套流程一氣呵成，開發上也會先從最小可交付的單元開始，而不是一口氣把整個系統生出來。看完大神把軟體工程的經驗，精煉後轉換成一個個可以直接呼叫的 Skill Prompt，只能說站在大神肩膀上開發，真的比自己瞎摸輕鬆太多。
