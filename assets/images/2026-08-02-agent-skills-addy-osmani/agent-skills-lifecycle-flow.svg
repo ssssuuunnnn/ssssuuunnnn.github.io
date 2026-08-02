@@ -1,0 +1,61 @@
+<svg width="680" height="320" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>agent-skills 六階段開發流程圖</title>
+<desc>從 /spec 定義需求，經過 /plan 拆解任務、/build 增量實作，到 /test 驗證、/review 品質關卡，最後 /ship 上線的六階段流程。</desc>
+
+<rect x="0" y="0" width="680" height="320" fill="#FFFFFF"/>
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Row 1: spec, plan, build -->
+<g>
+<rect x="40" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="130" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/spec</text>
+<text x="130" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">定義要做什麼</text>
+</g>
+
+<g>
+<rect x="240" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="330" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/plan</text>
+<text x="330" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">拆解任務</text>
+</g>
+
+<g>
+<rect x="440" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="530" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/build</text>
+<text x="530" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">增量實作</text>
+</g>
+
+<!-- Row 2: test, review, ship -->
+<g>
+<rect x="40" y="220" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="130" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/test</text>
+<text x="130" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">證明它是對的</text>
+</g>
+
+<g>
+<rect x="240" y="220" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="330" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/review</text>
+<text x="330" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">品質關卡</text>
+</g>
+
+<g>
+<rect x="440" y="220" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="530" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">/ship</text>
+<text x="530" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">上線</text>
+</g>
+
+<!-- Row 1 internal arrows -->
+<line x1="220" y1="92" x2="238" y2="92" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="420" y1="92" x2="438" y2="92" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Row 2 internal arrows -->
+<line x1="220" y1="252" x2="238" y2="252" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="420" y1="252" x2="438" y2="252" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- build -> test (wrap) -->
+<path d="M530 124 L530 160 L130 160 L130 218" fill="none" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
