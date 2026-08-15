@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "從「邊想邊寫」到「先立計畫書再動手」：GitHub Copilot 的 Plan Agent 怎麼補上工程紀律"
-date:   2026-08-15 21:30:00 +0800
+date:   2026-08-15 21:00:00 +0800
 description: "回到 GitHub Copilot，記錄用政府 OpenData 串接開發時，怎麼靠 Plan Agent 的「先計畫後執行」流程補上工程紀律，降低 AI 亂改程式的不確定性。"
 image: /assets/images/2026-08-15-copilot-plan-agent/copilot-plan-agent-flow.jpeg
 ---
