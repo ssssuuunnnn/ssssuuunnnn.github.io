@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A2UI 更新到 v1.0：從 v0.9.1 玩到候選版，Google 這套「Agent 生介面」協議改了什麼"
-date:   2026-08-23 21:30:00 +0800
+date:   2026-08-23 19:55:00 +0800
 description: "半年前玩過 A2UI v0.9.1，這次拆解剛釋出的 v1.0 candidate 規格，看 Google 這套讓 AI Agent 安全生成原生 UI 的協議，這次動了哪些筋骨。"
 image: /assets/images/2026-08-23-a2ui-v1/a2ui-v1-flow.svg
 ---
