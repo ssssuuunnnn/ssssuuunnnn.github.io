@@ -1,0 +1,71 @@
+<svg width="700" height="320" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>A2UI 資料流與 v1.0 雙向 RPC 示意圖</title>
+<desc>使用者發送需求給 AI Agent，Agent 生成 A2UI JSON 訊息串流給 Renderer，Renderer 用原生元件渲染 UI，使用者互動後把 action 傳回 Agent。v1.0 新增 callRendererFunction 與 callAgentFunction，讓 Agent 跟 Renderer 可以直接雙向呼叫，不必每次都繞回使用者互動這一圈。</desc>
+
+<rect x="0" y="0" width="700" height="320" fill="#FFFFFF"/>
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="arrow-new" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#B5560F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Row 1: User, Agent, A2UI JSON -->
+<g>
+<rect x="30" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="120" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">使用者</text>
+<text x="120" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">送出需求</text>
+</g>
+
+<g>
+<rect x="260" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="350" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">AI Agent</text>
+<text x="350" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">生成 A2UI JSON</text>
+</g>
+
+<g>
+<rect x="490" y="60" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="580" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">串流訊息</text>
+<text x="580" y="104" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">application/a2ui+json</text>
+</g>
+
+<!-- Row 2: Renderer, User Action, v1.0 new -->
+<g>
+<rect x="30" y="220" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="120" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">Renderer</text>
+<text x="120" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">Angular／Flutter／React 原生渲染</text>
+</g>
+
+<g>
+<rect x="260" y="220" width="180" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="350" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#04342C">使用者互動</text>
+<text x="350" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#085041">回傳 action 給 Agent</text>
+</g>
+
+<g>
+<rect x="490" y="220" width="180" height="64" rx="8" fill="#FBEBDD" stroke="#B5560F" stroke-width="0.5"/>
+<text x="580" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#5C2D06">v1.0 新增</text>
+<text x="580" y="264" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#8A430C">callAgentFunction 直接呼叫</text>
+</g>
+
+<!-- Row 1 internal arrows -->
+<line x1="210" y1="92" x2="258" y2="92" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="440" y1="92" x2="488" y2="92" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Row 2 internal arrows -->
+<line x1="210" y1="252" x2="258" y2="252" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="440" y1="252" x2="488" y2="252" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- json -> renderer (wrap) -->
+<path d="M580 124 L580 160 L120 160 L120 218" fill="none" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- old loop: user action back to Agent -->
+<path d="M350 218 L350 190 L350 92" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+<!-- v1.0 new: direct Agent <-> Renderer RPC -->
+<path d="M490 240 C 300 190, 200 150, 130 122" fill="none" stroke="#B5560F" stroke-width="1.5" marker-end="url(#arrow-new)"/>
+<path d="M420 122 C 400 160, 450 200, 488 236" fill="none" stroke="#B5560F" stroke-width="1.5" marker-end="url(#arrow-new)"/>
+</svg>

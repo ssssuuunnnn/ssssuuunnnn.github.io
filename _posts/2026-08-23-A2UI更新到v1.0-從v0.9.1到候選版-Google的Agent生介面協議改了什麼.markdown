@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "A2UI 更新到 v1.0：從 v0.9.1 玩到候選版，Google 這套「Agent 生介面」協議改了什麼"
+date:   2026-08-23 21:30:00 +0800
+description: "半年前玩過 A2UI v0.9.1，這次拆解剛釋出的 v1.0 candidate 規格，看 Google 這套讓 AI Agent 安全生成原生 UI 的協議，這次動了哪些筋骨。"
+image: /assets/images/2026-08-23-a2ui-v1/a2ui-v1-flow.svg
+---
+
+之前玩過一陣子 A2UI v0.9.1，那時候拿它串過幾個 demo，實驗讓 AI agent 直接吐出「可以渲染的 UI」，而不是一坨純文字或是要冒險讓它跑程式碼。這次回頭看官網 a2ui.org，發現規格已經推進到 v1.0，就找時間把新舊版本的差異梳理一遍。
+
+先講 A2UI 到底在解什麼問題：AI agent 要怎麼安全地跨信任邊界，把「豐富的 UI」送到前端？純文字太陽春，讓 agent 直接執行程式碼又太危險（UI injection 的風險），A2UI 的做法是讓 agent 送出「聲明式的組件描述」（一段 JSON），前端再用本地已經批准好的元件把它畫出來——agent 完全碰不到可執行的程式碼，只能在目錄（catalog）允許的組件範圍內拼 UI。這套協議是 Google 主導的，CopilotKit 跟社群也有掛名貢獻，走 Apache 2.0 授權，在 GitHub 上持續開發中。
+
+核心流程：agent 吐 JSON，前端用原生元件畫出來
+
+![a2ui-v1-flow](/assets/images/2026-08-23-a2ui-v1/a2ui-v1-flow.svg)
+
+使用者送出需求 ➔ Agent 生成 A2UI JSON ➔ 訊息用 `application/a2ui+json` 串流過去 ➔ Renderer（Angular／Flutter／React／Lit 都可以）用原生元件畫出畫面 ➔ 使用者操作，動作（action）再傳回 agent，agent 回一份更新過的 A2UI 訊息，整個迴圈繼續轉。這是 v0.9.1 就有的骨架，v1.0 動的是這個迴圈裡最卡的那一段。
+
+先講清楚一件事：官網跟 Roadmap 頁面都寫得很明白，v1.0 目前是 **Candidate（候選版）**，不是正式 stable，官方生產版本現在仍是 v0.9.1，GitHub repo 也還沒掛出 v1.0 或 v0.9.1 的 release tag。Roadmap 上寫 v1.0 真正 finalize（含穩定性保證、v0.9 遷移路徑、完整測試套件、renderer 認證計畫）要等到 2026 Q4。所以與其說「正式更新到 v1.0」，更精確的說法是規格已經定案到候選版這一步，架構級的改動基本都在裡面了，剩下的是等它被蓋章。
+
+1. 雙向 RPC——不用每次都繞回使用者互動
+
+這是這次改動裡份量最重的一項。v0.9.1 的迴圈基本是單向：agent 生 UI、使用者操作、動作傳回 agent。v1.0 新增了 `callRendererFunction`（agent 主動呼叫 renderer 上註冊好的函式）跟 `callAgentFunction`（renderer 反過來呼叫 agent），兩邊都要用共用的 `FunctionResponse` 格式回應。等於 agent 跟前端之間多了一條直接對話的管道，不必每件事都硬包成「使用者觸發的動作」才能傳得回去。
+
+2. 拿掉寫死的 theme，交給前端原生主題
+
+v0.9.1 的 `createSurface` 訊息裡有 `theme` 欄位，v1.0 直接把它拿掉，規格上寫的說法是「Decoupled Branding」——不要讓協議裡帶著寫死的品牌色，視覺樣式完全交回前端框架自己的原生主題機制去處理。對用慣自己 design system 的團隊來說，這樣接起來反而更乾淨。
+
+3. 術語統一：client → renderer，server → agent
+
+以前用 client/server 這組詞，但 A2UI 訊息有時候是在前端生成、渲染卻可能發生在伺服器端，client/server 這組字眼容易講不清楚誰是誰。v1.0 全面改成 renderer（畫面渲染那一端）跟 agent（生成 UI 邏輯那一端），連檔名都跟著改，`server_to_client.json` 變成 `agent_to_renderer.json`，這種正名雖然瑣碎，但看規格文件的時候確實少了很多要腦內翻譯的地方。
+
+4. Catalog Mixing——一個畫面可以混用多套組件目錄
+
+以前一個 UI surface 通常綁一套 catalog，v1.0 開放 `supportedCatalogIds` 可以宣告多個，UI 樹裡的組件跟函式呼叫都能各自標明自己是從哪個 catalog 來的。想混用官方 basic catalog 跟自己團隊寫的 custom catalog，不用再整包二選一。
+
+5. MIME type 標準化、驗證結果結構化
+
+傳輸層把 MIME type 統一成 `application/a2ui+json`，符合 IANA 的媒體類型準則；驗證相關的函式回傳型別也從單純的 `boolean` 改成結構化的 `ValidationResult`（帶 `valid`、`code`、`message`、`severity`），出錯的時候可以帶更多上下文，不是只回一個「對／錯」。
+
+想直接上手感受一下，官網給的 Quickstart 是一個 Restaurant Finder demo，Gemini 驅動的 A2A agent 搭 Lit renderer，本機就能跑起來：
+
+```bash
+git clone https://github.com/a2ui-project/a2ui.git
+cd a2ui
+export GEMINI_API_KEY="your_gemini_api_key_here"
+cd samples/client/lit
+corepack enable
+yarn install
+yarn demo:restaurant
+```
+
+不想裝東西的話，官網另外放了 [A2UI Composer](https://a2ui-composer.ag-ui.com/)，直接在瀏覽器裡用視覺編輯器拼組件、產出 A2UI JSON，貼進任何 agent 的 prompt 裡就能用；還有 A2UI Theater，先看預先做好的串流場景在 Lit、React、Angular 三種 renderer 上分別怎麼跑，不用自己動手寫程式碼就能先建立直覺。
+
+半年前用 v0.9.1 的時候，比較大的感覺是這套協議把「AI 生 UI」這件事的風險邊界畫得很清楚——agent 永遠只能在 catalog 允許的範圍內拼積木，不會有 UI injection 那種每次看到都會捏一把冷汗的疑慮。這次看 v1.0 candidate，最大的心得是：這個安全模型沒有變，變的是 agent 跟前端之間「誰能主動找誰講話」這件事——多了雙向 RPC 之後，很多以前要硬凹成「使用者按了一下才能觸發」的邏輯，現在可以讓 agent 跟 renderer 直接談，架構上更貼近真實的互動需求。等 2026 Q4 真的 finalize，這批改動大概就是定案的樣子了。
+
+資料來源：a2ui.org、a2ui-project/a2ui
